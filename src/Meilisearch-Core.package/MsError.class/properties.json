@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "Error",
+	"category" : "Meilisearch-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"properties",
+		"response",
+		"kind"
+	],
+	"name" : "MsError",
+	"type" : "normal"
+}
