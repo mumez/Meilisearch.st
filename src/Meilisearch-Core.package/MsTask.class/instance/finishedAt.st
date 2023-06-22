@@ -1,0 +1,4 @@
+accessing
+finishedAt
+
+	^ finishedAt
