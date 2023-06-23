@@ -9,6 +9,6 @@
 		"primaryKey",
 		"csvDelimiter"
 	],
-	"name" : "MsDocumentOptions",
+	"name" : "MsDocumentsWriteOptions",
 	"type" : "normal"
 }

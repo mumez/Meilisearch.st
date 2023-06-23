@@ -1,3 +1,3 @@
-actions
+actions-documents
 putDocuments: documents options: optionsDict
-	self httpJsonPost: 'documents' contents: documents.
+	^ self httpJsonPost: 'documents' params: optionsDict contents: documents.
