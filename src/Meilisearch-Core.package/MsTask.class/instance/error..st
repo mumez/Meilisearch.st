@@ -1,4 +1,4 @@
 accessing
-error1: anObject
+error: anObject
 
 	error := anObject

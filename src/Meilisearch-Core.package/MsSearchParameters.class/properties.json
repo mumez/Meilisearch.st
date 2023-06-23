@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "Object",
+	"super" : "MsOptions",
 	"category" : "Meilisearch-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],

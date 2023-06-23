@@ -1,5 +1,5 @@
 actions
-queryFieldsStringFrom: aDictionary
+queryParamsStringFrom: aDictionary
 	| strm |
 	aDictionary isEmpty ifTrue: [ ^ '' ].
 	strm := '' writeStream.

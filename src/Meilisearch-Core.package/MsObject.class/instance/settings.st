@@ -1,4 +1,4 @@
 accessing
 settings
 
-	^ settings ifNil: [ settings := MsSettings default ]
+	^ settings ifNil: [ settings := MsSettings new ]

@@ -1,0 +1,3 @@
+converting
+asDictionary
+	^ Dictionary new

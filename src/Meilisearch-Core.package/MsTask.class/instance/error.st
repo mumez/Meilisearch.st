@@ -1,4 +1,4 @@
 accessing
-error1
+error
 
 	^ error
