@@ -1,0 +1,3 @@
+actions
+delete
+	^ self httpJsonDelete: ''

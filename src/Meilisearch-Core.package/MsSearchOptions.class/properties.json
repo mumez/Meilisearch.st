@@ -19,6 +19,6 @@
 		"matches",
 		"filterBy"
 	],
-	"name" : "MsSearchParameters",
+	"name" : "MsSearchOptions",
 	"type" : "normal"
 }
