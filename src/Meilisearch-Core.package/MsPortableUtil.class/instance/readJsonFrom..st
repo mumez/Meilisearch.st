@@ -1,0 +1,3 @@
+private
+readJsonFrom: httpResponse
+	self subclassResponsibility

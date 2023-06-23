@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "MsObject",
+	"category" : "Meilisearch-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"uid",
+		"createdAt",
+		"updatedAt",
+		"primaryKey"
+	],
+	"name" : "MsIndex",
+	"type" : "normal"
+}

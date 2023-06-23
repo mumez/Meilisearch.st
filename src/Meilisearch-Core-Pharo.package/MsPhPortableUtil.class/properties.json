@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "MsPortableUtil",
+	"category" : "Meilisearch-Core-Pharo",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "MsPhPortableUtil",
+	"type" : "normal"
+}

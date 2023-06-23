@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "MsOptions",
+	"category" : "Meilisearch-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"primaryKey",
+		"csvDelimiter"
+	],
+	"name" : "MsDocumentsWriteOptions",
+	"type" : "normal"
+}

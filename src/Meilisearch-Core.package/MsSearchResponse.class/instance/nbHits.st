@@ -1,0 +1,4 @@
+accessing
+nbHits
+
+	^ nbHits

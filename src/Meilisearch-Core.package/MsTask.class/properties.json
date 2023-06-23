@@ -1,0 +1,23 @@
+{
+	"commentStamp" : "",
+	"super" : "MsObject",
+	"category" : "Meilisearch-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"uid",
+		"indexUid",
+		"status",
+		"type",
+		"canceledBy",
+		"details",
+		"error",
+		"duration",
+		"enqueuedAt",
+		"startedAt",
+		"finishedAt"
+	],
+	"name" : "MsTask",
+	"type" : "normal"
+}
