@@ -1,3 +1,3 @@
 actions-documents
 deleteAllDocuments
-	^ self httpJsonDelete: 'documents'
+	^ self asTask: (self httpJsonDelete: 'documents')

@@ -1,6 +1,7 @@
 initialization
 initFromDictionary: aDictionary
 	aDictionary at: 'uid' ifPresent: [ :v | self uid: v ].
+	aDictionary at: 'taskUid' ifPresent: [ :v | self uid: v ].
 	aDictionary at: 'indexUid' ifPresent: [ :v | self indexUid: v ].
 	aDictionary at: 'status' ifPresent: [ :v | self status: v ].
 	aDictionary at: 'type' ifPresent: [ :v | self type: v ].

@@ -1,4 +1,0 @@
-accessing
-exhaustiveNbHits
-
-	^ exhaustiveNbHits

@@ -1,3 +1,5 @@
 actions-documents
 mergeDocuments: documents options: optionsDict
-	^ self httpJsonPut: 'documents' params: optionsDict contents: documents.
+	| resp |
+	resp := self httpJsonPut: 'documents' params: optionsDict contents: documents.
+	^ self asTask: resp

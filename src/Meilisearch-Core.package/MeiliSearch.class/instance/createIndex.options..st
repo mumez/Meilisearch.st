@@ -5,4 +5,4 @@ createIndex: indexUid options: indexOptions
 	indexOptions keysAndValuesDo: [ :k :v |
 		conts at: k put: v 
 	].
-	^ self httpJsonPost: 'indexes' contents: conts
+	^ self asTask: (self httpJsonPost: 'indexes' contents: conts)

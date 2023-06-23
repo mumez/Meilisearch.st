@@ -1,3 +1,3 @@
 actions
 dumps
-	^ self httpJsonPost: 'dumps' contents: ''
+	^ self asTask: (self httpJsonPost: 'dumps' contents: '')

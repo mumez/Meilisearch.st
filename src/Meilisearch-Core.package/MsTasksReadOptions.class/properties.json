@@ -1,0 +1,25 @@
+{
+	"commentStamp" : "",
+	"super" : "MsOptions",
+	"category" : "Meilisearch-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"limit",
+		"from",
+		"uids",
+		"statuses",
+		"types",
+		"indexUids",
+		"canceledBy",
+		"beforeEnqueuedAt",
+		"beforeStartedAt",
+		"beforeFinishedAt",
+		"afterEnqueuedAt",
+		"afterStartedAt",
+		"afterFinishedAt"
+	],
+	"name" : "MsTasksReadOptions",
+	"type" : "normal"
+}
