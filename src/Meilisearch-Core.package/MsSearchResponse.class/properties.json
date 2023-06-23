@@ -1,0 +1,21 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "Meilisearch-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"hits",
+		"offset",
+		"limit",
+		"nbHits",
+		"exhaustiveNbHits",
+		"facetsDistribution",
+		"exhaustiveFacetsCount",
+		"processingTimeMs",
+		"query"
+	],
+	"name" : "MsSearchResponse",
+	"type" : "normal"
+}

@@ -1,3 +1,5 @@
 searching
 searchWithOptions: options
-	^ self httpJsonPost: '' contents: options
+	| resp |
+	resp := self httpJsonPost: 'search' contents: options.
+	^ MsSearchResponse fromDictionary: resp
