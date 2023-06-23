@@ -1,3 +1,3 @@
 actions-documents
 getAllDocuments
-	^ self getDocuments: #()
+	^ self getDocuments: Dictionary new

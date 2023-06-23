@@ -1,3 +1,3 @@
 actions
 update: options
-	^ self httpJsonPatch: '' contents: options
+	^ self asTask: (self httpJsonPatch: '' contents: options)

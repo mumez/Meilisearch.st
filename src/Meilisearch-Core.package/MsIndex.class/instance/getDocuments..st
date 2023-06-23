@@ -1,3 +1,5 @@
 actions-documents
 getDocuments: opts
-	^ self httpJsonPost: #('documents' 'fetch') contents: opts
+	| resp |
+	resp := self httpJsonPost: #('documents' 'fetch') contents: opts.
+	^ MsDocumentsResponse fromDictionary: resp

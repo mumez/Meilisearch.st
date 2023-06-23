@@ -1,3 +1,3 @@
 actions
 delete
-	^ self httpJsonDelete: ''
+	^ self asTask: (self httpJsonDelete: '')

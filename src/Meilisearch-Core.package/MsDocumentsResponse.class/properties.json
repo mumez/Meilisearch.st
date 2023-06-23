@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "MsResponse",
+	"category" : "Meilisearch-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"limit",
+		"total",
+		"results",
+		"offset"
+	],
+	"name" : "MsDocumentsResponse",
+	"type" : "normal"
+}

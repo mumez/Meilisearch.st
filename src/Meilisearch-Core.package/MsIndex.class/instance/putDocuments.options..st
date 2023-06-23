@@ -1,3 +1,5 @@
 actions-documents
 putDocuments: documents options: optionsDict
-	^ self httpJsonPost: 'documents' params: optionsDict contents: documents.
+	| resp |
+	resp := self httpJsonPost: 'documents' params: optionsDict contents: documents.
+	^ self asTask: resp
