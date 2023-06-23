@@ -1,0 +1,4 @@
+accessing
+totalPages
+
+	^ totalPages

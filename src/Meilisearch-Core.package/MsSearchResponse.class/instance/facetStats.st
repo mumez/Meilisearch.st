@@ -1,0 +1,4 @@
+accessing
+facetStats
+
+	^ facetStats
