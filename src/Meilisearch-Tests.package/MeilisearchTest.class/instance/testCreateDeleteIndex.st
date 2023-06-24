@@ -1,5 +1,5 @@
 tests
-testCreateDeleteIndexes
+testCreateDeleteIndex
 	| originalIndexes newIndexId newIndex newlIndexes createIndexTask deleteIndexTask |
 	originalIndexes := meilisearch indexes.
 	newIndexId := 'mailisearch-st-test-index-1'.
@@ -10,7 +10,7 @@ testCreateDeleteIndexes
 	newlIndexes := meilisearch indexes.
 	self assert: newlIndexes total - originalIndexes total equals: 1.
 	
-	newIndex := meilisearch index: newIndexId.
+	newIndex := (meilisearch index: newIndexId) loaded.
 	self assert: newIndex uid equals: newIndexId.
 	
 	deleteIndexTask := newIndex delete.
