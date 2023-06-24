@@ -1,3 +1,5 @@
 actions
 health
-	^ self httpJsonGet: 'health'
+	| resp |
+	resp := self httpJsonGet: 'health'.
+	^ resp at: 'status' ifAbsent: [ 'unknown' ]

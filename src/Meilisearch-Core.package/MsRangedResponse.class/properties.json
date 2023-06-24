@@ -11,6 +11,6 @@
 		"results",
 		"offset"
 	],
-	"name" : "MsDocumentsResponse",
+	"name" : "MsRangedResponse",
 	"type" : "normal"
 }

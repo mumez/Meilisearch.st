@@ -1,3 +1,5 @@
 instance creation
 default
-	^self settings: MsSettings default
+	^ self new
+		  settings: MsSettings default;
+		  yourself
