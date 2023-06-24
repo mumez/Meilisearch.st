@@ -1,4 +1,4 @@
-baseline
+baselines
 baseline: spec
 	<baseline>
 
@@ -9,6 +9,7 @@ baseline: spec
 			group: 'default' with: #('Core');
 			group: 'Core' with: #('Meilisearch-Core-Core')].
 	spec for: #pharo do:[
+		self neojson: spec.
 		spec package: 'Meilisearch-Core-Core-Pharo'.
 		spec package: 'Meilisearch-Core-Core' with: [spec includes: 'Meilisearch-Core-Core-Pharo'].
 	].

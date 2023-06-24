@@ -10,6 +10,6 @@
 	"instvars" : [
 		"meilisearch"
 	],
-	"name" : "MeilisearchTest",
+	"name" : "MeiliSearchTest",
 	"type" : "normal"
 }
