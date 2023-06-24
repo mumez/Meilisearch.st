@@ -6,4 +6,4 @@ indexesWithOptions: options
 		| indexes |
 		indexes := results collect: [ :each | MsIndex settings: self settings values: each].
 		resp at: 'results' put: indexes ].
-	^ resp
+	^ MsRangedResponse fromDictionary: resp
