@@ -1,5 +1,6 @@
 initialization
 initFromDictionary: aDictionary
+	aDictionary at: 'indexUid' ifPresent: [ :v | self indexUid: v ].
 	aDictionary at: 'hits' ifPresent: [ :v | self hits: v ].
 	aDictionary at: 'offset' ifPresent: [ :v | self offset: v asInteger ].
 	aDictionary at: 'limit' ifPresent: [ :v | self limit: v asInteger ].

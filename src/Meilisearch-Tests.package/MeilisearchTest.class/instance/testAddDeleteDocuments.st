@@ -4,25 +4,25 @@ testAddDeleteDocuments
 	originalIndexes := meilisearch indexes.
 	newIndexId := 'mailisearch-st-test-documents-1'.
 	createIndexTask := meilisearch createIndex: newIndexId.
-	self waitABit.
-	self assert: createIndexTask checkStatus isSucceeded.
+	createIndexTask waitEndedForAWhile.
+	self assert: createIndexTask isSucceeded.
 	
 	index := (meilisearch index: newIndexId).
 	documents := self documentsJson.
 		
 	putDocumentsTask := index putDocuments: documents.
-	self waitABit.
-	self assert: putDocumentsTask checkStatus isSucceeded.
+	putDocumentsTask waitEndedForAWhile.
+	self assert: putDocumentsTask isSucceeded.
 	
 	resp := index getAllDocuments.
 	self assert: resp total equals: documents size.
 	
 	deleteDocumentsTask := index deleteAllDocuments.
-	self waitABit.
+	deleteDocumentsTask waitEndedForAWhile.
 	
 	resp := index getAllDocuments.
 	self assert: resp total equals: 0.
 	
 	deleteIndexTask := index delete.
-	self waitABit.
-	self assert: deleteIndexTask checkStatus isSucceeded.
+	deleteIndexTask waitEndedForAWhile.
+	self assert: deleteIndexTask isSucceeded.

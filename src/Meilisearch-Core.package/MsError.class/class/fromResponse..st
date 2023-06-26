@@ -5,6 +5,8 @@ fromResponse: response
 	code = 204 ifTrue: [^ (self response: response kind: #NoContent) ].
 	code = 401
 		ifTrue: [^ (self response: response kind: #Unauthorized) ].
+	code = 403
+		ifTrue: [^ (self response: response kind: #Forbidden) ].
 	code = 404
 		ifTrue: [^ (self response: response kind: #NotFound) ].
 	code = 409 ifTrue: [^ (self response: response kind: #CannotDelete) ].

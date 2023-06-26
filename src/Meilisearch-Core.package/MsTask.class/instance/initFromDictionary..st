@@ -12,13 +12,13 @@ initFromDictionary: aDictionary
 
 	aDictionary
 		at: 'enqueuedAt'
-		ifPresent: [ :v |
-		self enqueuedAt: (DateAndTime readFrom: v readStream) ].
+		ifPresent: [ :v | v ifNotNil: [  
+		self enqueuedAt: (DateAndTime readFrom: v readStream)] ].
 	aDictionary
 		at: 'startedAt'
-		ifPresent: [ :v |
-		self startedAt: (DateAndTime readFrom: v readStream) ].
+		ifPresent: [ :v | v ifNotNil: [ 
+		self startedAt: (DateAndTime readFrom: v readStream)] ].
 	aDictionary
 		at: 'finishedAt'
-		ifPresent: [ :v |
-		self finishedAt: (DateAndTime readFrom: v readStream) ].
+		ifPresent: [ :v | v ifNotNil: [ 
+		self finishedAt: (DateAndTime readFrom: v readStream)] ].

@@ -1,17 +1,23 @@
 converting
 asDictionary
-	| dict |
-	dict := Dictionary new.
-	self q ifNotNil: [:v | dict at: 'q' put: v].
-	self offset ifNotNil: [:v | dict at: 'offset' put: v].
-	self limit ifNotNil: [:v | dict at: 'limit' put: v].
-	self filter ifNotNil: [:v | dict at: 'filter' put: v].
-	self facetsDistribution ifNotNil: [:v | dict at: 'facetsDistribution' put: v].
-	self facetsToRetrieve ifNotNil: [:v | dict at: 'facetsToRetrieve' put: v].
-	self attributesToRetrieve ifNotNil: [:v | dict at: 'attributesToRetrieve' put: v].
-	self attributesToCrop ifNotNil: [:v | dict at: 'attributesToCrop' put: v].
-	self cropLength ifNotNil: [:v | dict at: 'cropLength' put: v].
-	self attributesToHighlight ifNotNil: [:v | dict at: 'attributesToHighlight' put: v].
-	self matches ifNotNil: [:v | dict at: 'matches' put: v].
-	self filterBy ifNotNil: [:v | dict at: 'filterBy' put: v].
-	^ dict
+    | dict |
+    dict := Dictionary new.
+    self indexUid ifNotNil: [:v | dict at: 'indexUid' put: v].
+    self q ifNotNil: [:v | dict at: 'q' put: v].
+    self offset ifNotNil: [:v | dict at: 'offset' put: v].
+    self limit ifNotNil: [:v | dict at: 'limit' put: v].
+    self hitsPerPage ifNotNil: [:v | dict at: 'hitsPerPage' put: v].
+    self page ifNotNil: [:v | dict at: 'page' put: v].
+    self filter ifNotNil: [:v | dict at: 'filter' put: v].
+    self facets ifNotNil: [:v | dict at: 'facets' put: v].
+    self attributesToRetrieve ifNotNil: [:v | dict at: 'attributesToRetrieve' put: v].
+    self attributesToCrop ifNotNil: [:v | dict at: 'attributesToCrop' put: v].
+    self cropLength ifNotNil: [:v | dict at: 'cropLength' put: v].
+    self cropMarker ifNotNil: [:v | dict at: 'cropMarker' put: v].
+    self attributesToHighlight ifNotNil: [:v | dict at: 'attributesToHighlight' put: v].
+    self highlightPreTag ifNotNil: [:v | dict at: 'highlightPreTag' put: v].
+    self highlightPostTag ifNotNil: [:v | dict at: 'highlightPostTag' put: v].
+    self showMatchesPosition ifNotNil: [:v | dict at: 'showMatchesPosition' put: v].
+    self sort ifNotNil: [:v | dict at: 'sort' put: v].
+    self matchingStrategy ifNotNil: [:v | dict at: 'matchingStrategy' put: v].
+    ^ dict
