@@ -1,3 +1,7 @@
 accessing
 index: indexUid
-	^ self indexUid: indexUid 
+	| uid |
+	uid := indexUid isString
+		       ifTrue: [ indexUid ]
+		       ifFalse: [ indexUid uid ].
+	^ self indexUid: uid
