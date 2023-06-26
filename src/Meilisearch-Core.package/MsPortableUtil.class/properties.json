@@ -2,9 +2,7 @@
 	"commentStamp" : "",
 	"super" : "Object",
 	"category" : "Meilisearch-Core",
-	"classinstvars" : [
-		"default"
-	],
+	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [
 		"ActualClass"
