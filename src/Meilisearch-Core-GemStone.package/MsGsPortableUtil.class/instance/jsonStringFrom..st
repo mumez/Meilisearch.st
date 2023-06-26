@@ -6,5 +6,5 @@ jsonStringFrom: valueOrAssocs
 		ifTrue: [dict := valueOrAssocs asDictionary.
 			param := dict]
 		ifFalse: [param := valueOrAssocs].
-	rawJsonString := NeoJSONWriter toString: param.
+	rawJsonString := STON toString: param.
 	^ rawJsonString
