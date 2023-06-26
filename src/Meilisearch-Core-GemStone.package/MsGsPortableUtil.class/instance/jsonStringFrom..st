@@ -6,5 +6,5 @@ jsonStringFrom: valueOrAssocs
 		ifTrue: [dict := valueOrAssocs asDictionary.
 			param := dict]
 		ifFalse: [param := valueOrAssocs].
-	rawJsonString := STON toString: param.
+	rawJsonString := STON toJsonString: param.
 	^ rawJsonString
