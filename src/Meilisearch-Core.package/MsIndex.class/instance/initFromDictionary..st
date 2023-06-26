@@ -4,9 +4,9 @@ initFromDictionary: aDictionary
 	aDictionary at: 'primaryKey' ifPresent: [ :v | self primaryKey: v ].
 	aDictionary
 		at: 'createdAt'
-		ifPresent: [ :v |
-		self createdAt: (DateAndTime readFrom: v readStream) ].
+		ifPresent: [ :v | v ifNotNil: [  
+		self createdAt: (DateAndTime readFrom: v readStream)] ].
 	aDictionary
 		at: 'updatedAt'
-		ifPresent: [ :v |
-		self updatedAt: (DateAndTime readFrom: v readStream) ].
+		ifPresent: [ :v | v ifNotNil: [  
+		self updatedAt: (DateAndTime readFrom: v readStream)] ].
