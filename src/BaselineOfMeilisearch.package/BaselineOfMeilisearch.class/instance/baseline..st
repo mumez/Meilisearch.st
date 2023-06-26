@@ -7,7 +7,7 @@ baseline: spec
 			package: 'Meilisearch-Core'.
 		spec 
 			group: 'default' with: #('Core');
-			group: 'Core' with: #('Meilisearch-Core-Core')].
+			group: 'Core' with: #('Meilisearch-Core')].
 	spec for: #pharo do:[
 		spec package: 'Meilisearch-Core-Pharo'.
 		spec package: 'Meilisearch-Core' with: [spec includes: 'Meilisearch-Core-Pharo'].
