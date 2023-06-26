@@ -9,10 +9,10 @@ baseline: spec
 			group: 'default' with: #('Core');
 			group: 'Core' with: #('Meilisearch-Core-Core')].
 	spec for: #pharo do:[
-		spec package: 'Meilisearch-Core-Core-Pharo'.
-		spec package: 'Meilisearch-Core-Core' with: [spec includes: 'Meilisearch-Core-Core-Pharo'].
+		spec package: 'Meilisearch-Core-Pharo'.
+		spec package: 'Meilisearch-Core' with: [spec includes: 'Meilisearch-Core-Pharo'].
 	].
 	spec for: #gemstone do:[
-		spec package: 'Meilisearch-Core-Core-GemStone'.
-		spec package: 'Meilisearch-Core-Core' with: [spec includes: 'Meilisearch-Core-Core-GemStone'].
+		spec package: 'Meilisearch-Core-GemStone'.
+		spec package: 'Meilisearch-Core' with: [spec includes: 'Meilisearch-Core-GemStone'].
 	].
