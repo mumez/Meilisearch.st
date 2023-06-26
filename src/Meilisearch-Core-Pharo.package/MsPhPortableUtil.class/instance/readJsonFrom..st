@@ -1,3 +1,3 @@
 private
 readJsonFrom: aStream
-	^ (NeoJSONReader on: aStream) next
+	^ STON fromStream: aStream
