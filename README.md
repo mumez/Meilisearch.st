@@ -79,6 +79,8 @@ task waitEndedForAWhile. "Await task is ended"
 
 ### Searching documents
 
+#### Basic search
+
 ```Smalltalk
 index := MeiliSearch new index: 'my-blog'.
 resp := index search: 'Meilisearch'.
@@ -91,6 +93,36 @@ resp := index search: 'Smalltalk'.
 resp hits. "print it => an Array(a Dictionary('contents'->'I did Smalltalk programming' 'id'->2
 'title'->'Smalltalk' ))"
 
+```
+
+#### Search with options
+
+```Smalltalk
+resp := index search: 'Meilisearch' optionsUsing:[:opts | opts attributesToRetrieve: #('id')].
+resp hits. "print it => an Array(a Dictionary('id'->3 ) a Dictionary('id'->1 ))"
+
+resp := index search: 'Meilisearch' optionsUsing:[:opts | opts attributesToRetrieve: #('id'); offset: 1; limit: 1].
+resp hits. "print it => an Array(a Dictionary('id'->1 ))"
+
+```
+
+#### Multi search
+
+You can also submit multiple searches in a single request.
+
+```Smalltalk
+(meili createIndex: 'my-wiki') waitEndedForAWhile.
+otherIndex := meili index: 'my-wiki'.
+otherIndex putDocuments: {
+  {'id' -> 1. 'title' -> 'Smalltalk meetup'. 'contents'->'June 9 will be a Smalltalk meet-up in Tokyo' } asDictionary.
+}.
+resp := meili multiSearchUsing: [ :opts | {
+	(opts index: otherIndex) q: 'Smalltalk'.
+	(opts index: 'my-blog') q: 'Smalltalk'; attributesToRetrieve: #('id')
+}].
+resp collect: [ :each | each hits ]. "print it => an Array(an Array(a Dictionary('contents'->'June 9 will be a Smalltalk meet-up
+in Tokyo' 'id'->1 'title'->'Smalltalk meetup' )) an Array(a Dictionary('id'->2
+)))"
 ```
 
 ### Deleting an index
