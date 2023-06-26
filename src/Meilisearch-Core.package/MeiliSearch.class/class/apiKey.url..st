@@ -1,6 +1,6 @@
 instance creation
 apiKey: apiKey url: targetUrl
-	^ self new settings
-		  apiKey: apiKey;
-		  targetUrl: targetUrl;
-			yourself
+	| inst |
+	inst := self apiKey: apiKey.
+	inst settings targetUrl: targetUrl.
+	^ inst

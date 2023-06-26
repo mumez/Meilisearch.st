@@ -6,18 +6,24 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
+		"indexUid",
 		"q",
 		"offset",
 		"limit",
+		"hitsPerPage",
+		"page",
 		"filter",
-		"facetsDistribution",
-		"facetsToRetrieve",
+		"facets",
 		"attributesToRetrieve",
 		"attributesToCrop",
 		"cropLength",
+		"cropMarker",
 		"attributesToHighlight",
-		"matches",
-		"filterBy"
+		"highlightPreTag",
+		"highlightPostTag",
+		"showMatchesPosition",
+		"sort",
+		"matchingStrategy"
 	],
 	"name" : "MsSearchOptions",
 	"type" : "normal"

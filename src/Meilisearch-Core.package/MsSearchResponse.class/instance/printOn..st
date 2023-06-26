@@ -1,6 +1,10 @@
 printing
 printOn: aStream
 	super printOn: aStream.
+	indexUid ifNotNil: [
+		aStream
+			nextPutAll: ' indexUid: ';
+			print: indexUid].
 	aStream
 		nextPutAll: ' hits: ';
 		print: hits.

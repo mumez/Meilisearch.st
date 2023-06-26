@@ -1,4 +1,0 @@
-accessing
-filterBy
-
-	^ filterBy

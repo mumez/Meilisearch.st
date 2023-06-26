@@ -1,5 +1,6 @@
 instance creation
 apiKey: apiKey
-	^ self new settings
-		  apiKey: apiKey;
-		  yourself
+	| inst |
+	inst := self new.
+	inst settings apiKey: apiKey.
+	^ inst
