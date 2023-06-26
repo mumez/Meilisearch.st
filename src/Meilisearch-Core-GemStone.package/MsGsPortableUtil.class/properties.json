@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "MsPortableUtil",
+	"category" : "Meilisearch-Core-GemStone",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "MsGsPortableUtil",
+	"type" : "normal"
+}

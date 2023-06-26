@@ -5,7 +5,7 @@ documentsJsonString
     {
         "id": 1,
         "title": "Exploring AI: The Future of Technology",
-        "contents": "Artificial Intelligence (AI) is transforming the digital landscape. From autonomous driving to automated customer service, AI technology is everywhere and it''s the future of technology."
+        "contents": "Artificial Intelligence (AI) is transforming the digital landscape. From autonomous driving to automated customer service, AI technology is everywhere and it is the future of technology."
     },
     {
         "id": 2,

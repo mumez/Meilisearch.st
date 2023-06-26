@@ -1,3 +1,3 @@
 tests - fixture
 documentsJson
-	^ MsPortableUtil default readJsonFrom: self documentsJsonString readStream
+	^ meilisearch portableUtil readJsonFrom: self documentsJsonString readStream

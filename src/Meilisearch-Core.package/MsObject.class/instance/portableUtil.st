@@ -1,3 +1,3 @@
 accessing
 portableUtil
-	^ MsPortableUtil default
+	^ MsPortableUtil defaultOn: self settings
