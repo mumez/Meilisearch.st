@@ -9,7 +9,7 @@ testSearchDocumentsWithOptions
 	
 	index := (meilisearch index: newIndexId).
 	settingsTask := index applySettingsUsing: [ :opts | 
-		opts sortableAttributes: #('id' 'title'); filterableAttributes: #('id' 'title').
+		opts sortableAttributes: #('id' 'title'); filterableAttributes: #('title').
 	].
 	settingsTask waitEndedForAWhile.
 	documents := self documentsJson.
