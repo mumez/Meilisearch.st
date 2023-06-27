@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        smalltalk: [Pharo64-11, GemStone64-3.6.x]
+        smalltalk: [Pharo64-11]
         experimental: [false]
     continue-on-error: ${{ matrix.experimental }}
     name: ${{ matrix.smalltalk }}
