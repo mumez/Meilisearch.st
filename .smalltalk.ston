@@ -1,0 +1,14 @@
+SmalltalkCISpec {
+  #preLoading : 'scripts/preTesting.st',
+  #loading : [
+    SCIMetacelloLoadSpec {
+      #baseline : 'Meilisearch',
+      #directory : 'src',
+      #load : [ 'default' ],
+      #onConflict : #useLoaded,
+      #useLatestMetacello : false,
+      #onWarningLog : true,
+      #platforms : [ #pharo ]
+    }
+  ]
+}
