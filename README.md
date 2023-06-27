@@ -1,4 +1,7 @@
 # Meilisearch.st
+
+[![CI](https://github.com/mumez/Meilisearch.st/actions/workflows/main.yml/badge.svg)](https://github.com/mumez/Meilisearch.st/actions/workflows/main.yml)
+
 Meilisearch client for Smalltalk.
 Currently, Pharo 11 and GemStone/S 3.6.x are supported.
 
