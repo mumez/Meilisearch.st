@@ -1,5 +1,4 @@
 SmalltalkCISpec {
-  #preLoading : 'scripts/preTesting.st',
   #loading : [
     SCIMetacelloLoadSpec {
       #baseline : 'Meilisearch',
