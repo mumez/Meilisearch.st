@@ -1,0 +1,23 @@
+{
+	"commentStamp" : "",
+	"super" : "MsOptions",
+	"category" : "Meilisearch-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"displayedAttributes",
+		"distinctAttribute",
+		"faceting",
+		"filterableAttributes",
+		"pagination",
+		"rankingRules",
+		"searchableAttributes",
+		"sortableAttributes",
+		"stopWords",
+		"synonyms",
+		"typoTolerance"
+	],
+	"name" : "MsIndexSettings",
+	"type" : "normal"
+}

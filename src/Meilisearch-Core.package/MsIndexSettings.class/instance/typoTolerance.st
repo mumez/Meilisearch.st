@@ -1,0 +1,4 @@
+accessing
+typoTolerance
+
+	^ typoTolerance
