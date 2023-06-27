@@ -1,0 +1,4 @@
+accessing
+searchableAttributes
+
+	^ searchableAttributes
