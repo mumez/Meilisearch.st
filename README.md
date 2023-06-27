@@ -98,7 +98,7 @@ resp hits. "print it => an Array(a Dictionary('contents'->'I did Smalltalk progr
 #### Search with options
 
 ```Smalltalk
-resp := index search: 'Meilisearch'  :[:opts | opts attributesToRetrieve: #('id')].
+resp := index search: 'Meilisearch' optionsUsing:[:opts | opts attributesToRetrieve: #('id')].
 resp hits. "print it => an Array(a Dictionary('id'->3 ) a Dictionary('id'->1 ))"
 
 resp := index search: 'Meilisearch' optionsUsing:[:opts | opts attributesToRetrieve: #('id'); offset: 1; limit: 1].
