@@ -110,7 +110,7 @@ resp hits. "print it => an Array(a Dictionary('id'->1 ))"
 "You can apply index-specific settings for advanced searching"
 attributes := #('id' 'title').
 settingsTask := index applySettingsUsing: [ :opts | 
-  opts sortableAttributes: attributes; filterableAttributes: attributes; displayedAttributes: attributes.
+  opts sortableAttributes: attributes copy; filterableAttributes: attributes copy; displayedAttributes: attributes copy.
 ].
 settingsTask waitEndedForAWhile.
 resp := index search: 'Meilisearch' optionsUsing:[:opts | opts filter: 'title = "Woke up"']. 
@@ -133,8 +133,7 @@ resp := meili multiSearchUsing: [ :opts | {
   (opts index: 'my-blog') q: 'Smalltalk'; attributesToRetrieve: #('id')
 }].
 resp collect: [ :each | each hits ]. "print it => an Array(an Array(a Dictionary('contents'->'June 9 will be a Smalltalk meet-up
-in Tokyo' 'id'->1 'title'->'Smalltalk meetup' )) an Array(a Dictionary('id'->2
-)))"
+in Tokyo' 'id'->1 'title'->'Smalltalk meetup' )) an Array(a Dictionary('id'->2)))"
 ```
 
 ### Deleting an index
