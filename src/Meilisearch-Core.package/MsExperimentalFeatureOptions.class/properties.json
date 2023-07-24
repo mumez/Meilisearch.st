@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "MsOptions",
+	"category" : "Meilisearch-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"vectorStore",
+		"scoreDetails"
+	],
+	"name" : "MsExperimentalFeatureOptions",
+	"type" : "normal"
+}

@@ -20,4 +20,8 @@ asDictionary
     self showMatchesPosition ifNotNil: [:v | dict at: 'showMatchesPosition' put: v].
     self sort ifNotNil: [:v | dict at: 'sort' put: v].
     self matchingStrategy ifNotNil: [:v | dict at: 'matchingStrategy' put: v].
+    self showRankingScore ifNotNil: [:v | dict at: 'showRankingScore' put: v].
+    self showRankingScoreDetails ifNotNil: [:v | dict at: 'showRankingScoreDetails' put: v].
+    self attributesToSearchOn ifNotNil: [:v | dict at: 'attributesToSearchOn' put: v].
+    self vector ifNotNil: [:v | dict at: 'vector' put: v].
     ^ dict
