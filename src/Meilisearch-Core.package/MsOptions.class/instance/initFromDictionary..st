@@ -1,0 +1,3 @@
+initialization
+initFromDictionary: aDictionary
+	self subclassResponsibility 
