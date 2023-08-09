@@ -1,0 +1,4 @@
+accessing
+facetQuery
+
+	^ facetQuery
