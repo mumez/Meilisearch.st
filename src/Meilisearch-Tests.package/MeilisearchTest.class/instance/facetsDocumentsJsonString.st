@@ -12,7 +12,8 @@ facetsDocumentsJsonString
       "Literature"
     ],
     "language": "English",
-    "author": "Charles Dickens"
+    "author": "Charles Dickens",
+    "rating": 4.5
   },
   {
     "id": 6,
@@ -23,7 +24,8 @@ facetsDocumentsJsonString
       "Literature"
     ],
     "language": "English",
-    "author": "Jane Austen"
+    "author": "Jane Austen",
+    "rating": 4.7
   },
   {
     "id": 7,
@@ -34,7 +36,8 @@ facetsDocumentsJsonString
       "Literature"
     ],
     "language": "English",
-    "author": "Herman Melville"
+    "author": "Herman Melville",
+    "rating": 4.8
   },
   {
     "id": 8,
@@ -46,7 +49,8 @@ facetsDocumentsJsonString
       "American"
     ],
     "language": "English",
-    "author": "F. Scott Fitzgerald"
+    "author": "F. Scott Fitzgerald",
+    "rating": 4.8
   },
   {
     "id": 9,
@@ -57,8 +61,9 @@ facetsDocumentsJsonString
       "Literature",
       "Russian"
     ],
-    "language": "English",
-    "author": "Leo Tolstoy"
+    "language": "Russian",
+    "author": "Leo Tolstoy",
+    "rating": 4.5
   },
   {
     "id": 10,
@@ -70,13 +75,71 @@ facetsDocumentsJsonString
       "American"
     ],
     "language": "English",
-    "author": "Harper Lee"
+    "author": "Harper Lee",
+    "rating": 4.3
   },
   {
     "id": 11,
-    "title": "Alice''''s Adventures in Wonderland",
+    "title": "Alice''s Adventures in Wonderland",
     "genres": [
-      "Children''''s Literature",
+      "Children''s Literature",
+      "Classics",
+      "Fantasy"
+    ],
+    "language": "English",
+    "author": "Lewis Carroll",
+    "rating": 4.3
+  },
+  {
+    "id": 12,
+    "title": "Charlotte''s Web",
+    "genres": [
+      "Children''s Literature",
+      "Classics"
+    ],
+    "language": "English",
+    "author": "E.B. White",
+    "rating": 4.5
+  },
+  {
+    "id": 13,
+    "title": "The Hitchhiker''s Guide to the Galaxy",
+    "genres": [
+      "Comedy",
+      "Science Fiction",
+      "Adventure"
+    ],
+    "language": "English",
+    "author": "Douglas Adams",
+    "rating": 4.3
+  },
+  {
+    "id": 14,
+    "title": "Much Ado About Nothing",
+    "genres": [
+      "Comedy",
+      "Classics",
+      "Drama"
+    ],
+    "language": "English",
+    "author": "William Shakespeare",
+    "rating": 4.3
+  },
+  {
+    "id": 15,
+    "title": "Matilda",
+    "genres": [
+      "Children''s Literature",
+      "Comedy",
+      "Classics"
+    ],
+    "language": "English",
+    "author": "Roald Dahl",
+    "rating": 4.4
+  }
+]''s Adventures in Wonderland",
+    "genres": [
+      "Children''s Literature",
       "Classics",
       "Fantasy"
     ],
@@ -85,9 +148,9 @@ facetsDocumentsJsonString
   },
   {
     "id": 12,
-    "title": "Charlotte''''s Web",
+    "title": "Charlotte''s Web",
     "genres": [
-      "Children''''s Literature",
+      "Children''s Literature",
       "Classics"
     ],
     "language": "English",
@@ -95,7 +158,7 @@ facetsDocumentsJsonString
   },
   {
     "id": 13,
-    "title": "The Hitchhiker''''s Guide to the Galaxy",
+    "title": "The Hitchhiker''s Guide to the Galaxy",
     "genres": [
       "Comedy",
       "Science Fiction",
@@ -119,7 +182,7 @@ facetsDocumentsJsonString
     "id": 15,
     "title": "Matilda",
     "genres": [
-      "Children''''s Literature",
+      "Children''s Literature",
       "Comedy",
       "Classics"
     ],
