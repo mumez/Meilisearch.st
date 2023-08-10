@@ -1,4 +1,4 @@
-facet-searching
+searching-facet
 facetSearchWithOptions: options
 	| resp |
 	resp := self httpJsonPost: 'facet-search' contents: options.

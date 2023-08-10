@@ -1,4 +1,4 @@
-facet-searching
+searching-facet
 facetSearchUsing: optionsBuilder
 	| opts |
 	opts := MsFacetSearchOptions new.

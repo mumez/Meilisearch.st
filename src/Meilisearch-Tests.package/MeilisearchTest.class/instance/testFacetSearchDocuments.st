@@ -1,6 +1,6 @@
 tests
 testFacetSearchDocuments
-	| originalIndexes newIndexId index settingsTask createIndexTask documents putDocumentsTask resp languageDistibution ratingStats deleteDocumentsTask deleteIndexTask |
+	| originalIndexes newIndexId index settingsTask createIndexTask documents putDocumentsTask resp facetHits classics comedy childrensLiterature deleteDocumentsTask deleteIndexTask |
 	originalIndexes := meilisearch indexes.
 	newIndexId := 'mailisearch-st-test-facet-search-1'.
 	createIndexTask := meilisearch createIndex: newIndexId.
@@ -16,17 +16,16 @@ testFacetSearchDocuments
 	putDocumentsTask := index putDocuments: documents.
 	putDocumentsTask waitEndedForAWhile.
 	self assert: putDocumentsTask isSucceeded.
-		
-	resp := index search: 'classic' optionsUsing: [:opts | opts facets: #('genres' 'language' 'rating')].
-	resp inspect.
-	self assert: resp estimatedTotalHits equals: 10.
-	self assert: (resp hits collect: [ :each | each at: 'id' ]) sorted equals: #(5 6 7 8 9 10 11 12 14 15).
-	languageDistibution := resp facetDistribution at: 'language'.
-	self assert: (languageDistibution at: 'English') equals: 9.
-	self assert: (languageDistibution at: 'Russian') equals: 1.
-	ratingStats := resp facetStats at: 'rating' ifAbsent: [Dictionary new].
-	self assert: (ratingStats at: 'min') equals: 4.3.
-	self assert: (ratingStats at: 'max') equals: 4.8.
+	
+	resp := index facetSearchUsing: [:opts | opts facetQuery: 'c'; facetName: 'genres'; filter: 'rating > 4.3'].
+	facetHits := resp facetHits.
+	self assert: (facetHits size) equals: 3.
+	classics := facetHits detect: [ :each | (each at: 'value') = 'Classics'].
+	self assert: (classics at: 'count') equals: 7.
+	comedy := facetHits detect: [ :each | (each at: 'value') = 'Comedy'].
+	self assert: (comedy at: 'count') equals: 1.
+	childrensLiterature := facetHits detect: [ :each | (each at: 'value') = 'Children''s Literature'].
+	self assert: (childrensLiterature at: 'count') equals: 2.
 	
 	deleteDocumentsTask := index deleteAllDocuments.
 	deleteDocumentsTask waitEndedForAWhile.
