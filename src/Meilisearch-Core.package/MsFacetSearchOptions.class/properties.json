@@ -1,0 +1,18 @@
+{
+	"commentStamp" : "",
+	"super" : "MsOptions",
+	"category" : "Meilisearch-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"facetName",
+		"facetQuery",
+		"q",
+		"filter",
+		"matchingStrategy",
+		"attributesToSearchOn"
+	],
+	"name" : "MsFacetSearchOptions",
+	"type" : "normal"
+}

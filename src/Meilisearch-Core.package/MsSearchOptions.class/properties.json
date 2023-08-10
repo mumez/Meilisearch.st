@@ -23,7 +23,11 @@
 		"highlightPostTag",
 		"showMatchesPosition",
 		"sort",
-		"matchingStrategy"
+		"matchingStrategy",
+		"showRankingScore",
+		"attributesToSearchOn",
+		"showRankingScoreDetails",
+		"vector"
 	],
 	"name" : "MsSearchOptions",
 	"type" : "normal"

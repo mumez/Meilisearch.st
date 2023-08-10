@@ -1,4 +1,4 @@
 accessing
 statuses
 
-	^ statuses
+	^ statuses ifNil: [ statuses := Set new ]
