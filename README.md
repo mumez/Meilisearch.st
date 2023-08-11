@@ -136,6 +136,68 @@ resp collect: [ :each | each hits ]. "print it => an Array(an Array(a Dictionary
 in Tokyo' 'id'->1 'title'->'Smalltalk meetup' )) an Array(a Dictionary('id'->2)))"
 ```
 
+### Search with facets
+
+```Smalltalk
+(meili createIndex: 'facet-books') waitEndedForAWhile.
+booksIndex := meili index: 'facet-books'.
+settingsTask := index applySettingsUsing: [ :opts | 
+	opts filterableAttributes: #('title' 'rating' 'genres').
+].
+settingsTask waitEndedForAWhile.
+docs := {    
+    {'id' -> 1. 'title' -> 'Hard Times'. 'rating' -> 4.5.
+    'genres' -> #('Classics' 'Victorian' 'English Literature')} asDictionary.
+    {'id' -> 2. 'title' -> 'The Great Gatsby'. 'rating' -> 4.8.
+    'genres' -> #('Classics' 'American Literature') } asDictionary.
+    {'id' -> 3. 'title' -> 'Moby Dick'. 'rating' -> 4.7.
+    'genres' -> #('Classics' 'American Literature') } asDictionary.
+}.
+
+resp := index search: 'classic' optionsUsing: [:opts | opts facets: #('genres' 'rating')].
+
+resp := index search: 'american' optionsUsing: [:opts | opts facets: #('genres' 'rating')].
+
+resp facetDistribution at: 'genres'.
+resp facetStats at: 'rating'.
+
+resp := index facetSearchUsing: [:opts | opts facetQuery: 'c'; facetName: 'genres'; filter: 'rating > 4.3'].
+facetHits := resp facetHits.
+
+```
+
+### Vector search
+
+From Meilisearch 1.3, you can search documents by vectors.
+This feature is still an experimental, so you should enable it explicitly by experimental features API.
+
+```Smalltalk
+"Enable vector search feature"
+meili vectorStore: true.
+```
+
+Now you can start vector search.
+
+```Smalltalk
+(meili createIndex: 'vector-blog') waitEndedForAWhile.
+otherIndex := meili index: 'vector-blog'.
+
+"Each document should have '_vectors' field to store vectors"
+"Those values are dummy. In reality, values should be calculated by some word2vec programs."
+docs := {    
+    {'id' -> 1. 'title' -> 'Woke up'. 'contents' -> 'I finally woke up'.
+    '_vectors' -> #(0 0.8 -0.2)} asDictionary.
+    {'id' -> 2. 'title' -> 'Smalltalk'. 'contents' -> 'I did Smalltalk'.
+    '_vectors' -> #(1 -0.2 0) } asDictionary.
+    {'id' -> 3. 'title' -> 'Meilisearch.st'. 'contents' -> 'I tried Meilisearch.st'.
+    '_vectors' -> #(1 2 3) } asDictionary.
+}.
+
+resp := index vectorSearch: #(1 2 3).
+resp := index vectorSearch: #(0 0.8 0.2).
+
+```
+
 ### Deleting an index
 
 ```Smalltalk
