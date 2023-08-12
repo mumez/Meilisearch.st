@@ -138,10 +138,12 @@ in Tokyo' 'id'->1 'title'->'Smalltalk meetup' )) an Array(a Dictionary('id'->2))
 
 ### Search with facets
 
+By setting #filterableAttributes: on an index, you can enable [faceted search](https://www.meilisearch.com/docs/learn/fine_tuning_results/faceted_search) feature. The search response includes facets statistics, which can be used to further refine search results.
+
 ```Smalltalk
 (meili createIndex: 'facet-books') waitEndedForAWhile.
 booksIndex := meili index: 'facet-books'.
-settingsTask := index applySettingsUsing: [ :opts | 
+settingsTask := booksIndex applySettingsUsing: [ :opts | 
 	opts filterableAttributes: #('title' 'rating' 'genres').
 ].
 settingsTask waitEndedForAWhile.
@@ -153,37 +155,43 @@ docs := {
     {'id' -> 3. 'title' -> 'Moby Dick'. 'rating' -> 4.7.
     'genres' -> #('Classics' 'American Literature') } asDictionary.
 }.
+(booksIndex putDocuments: docs) waitEndedForAWhile.
+resp := booksIndex search: 'classic' optionsUsing: [:opts | opts facets: #('genres' 'rating')].
 
-resp := index search: 'classic' optionsUsing: [:opts | opts facets: #('genres' 'rating')].
+resp facetStats at: 'rating'. "print it => a Dictionary('max'->4.8 'min'->4.5 )"
+resp facetDistribution at: 'genres'. "print it => a Dictionary('American Literature'->2 'Classics'->3 'English Literature'->1
+'Victorian'->1 )"
 
-resp := index search: 'american' optionsUsing: [:opts | opts facets: #('genres' 'rating')].
+resp := booksIndex search: 'America' optionsUsing: [:opts | opts facets: #('genres' 'rating')].
+resp facetStats at: 'rating'. "print it => a Dictionary('max'->4.8 'min'->4.7 )"
+resp facetDistribution at: 'genres'. "print it => a Dictionary('American Literature'->2 'Classics'->2 )"
+```
 
-resp facetDistribution at: 'genres'.
-resp facetStats at: 'rating'.
+You can also use #facetSearchUsing: to search for facet values in the index. The #facetQuery: search word is a prefix match and allows typos.
 
-resp := index facetSearchUsing: [:opts | opts facetQuery: 'c'; facetName: 'genres'; filter: 'rating > 4.3'].
-facetHits := resp facetHits.
+```Smalltalk
+resp := booksIndex facetSearchUsing: [:opts | opts facetQuery: 'clasic'; facetName: 'genres'; filter: 'rating > 4.5'].
+facetHits := resp facetHits. "print it => an Array(a Dictionary('count'->2 'value'->'Classics' ))"
 
 ```
 
 ### Vector search
 
-From Meilisearch 1.3, you can search documents by vectors.
-This feature is still an experimental, so you should enable it explicitly by experimental features API.
+Starting with Meilisearch 1.3 you can [search documents by vectors](https://www.meilisearch.com/docs/learn/experimental/vector_search). This feature is still experimental, so you should explicitly enable it using the experimental features API.
 
 ```Smalltalk
 "Enable vector search feature"
 meili vectorStore: true.
 ```
 
-Now you can start vector search.
+Now you can perform vector search.
 
 ```Smalltalk
 (meili createIndex: 'vector-blog') waitEndedForAWhile.
-otherIndex := meili index: 'vector-blog'.
+vectorBlogIndex := meili index: 'vector-blog'.
 
 "Each document should have '_vectors' field to store vectors"
-"Those values are dummy. In reality, values should be calculated by some word2vec programs."
+"These values are dummy. In reality, the values should be calculated by some word2vec programs"
 docs := {    
     {'id' -> 1. 'title' -> 'Woke up'. 'contents' -> 'I finally woke up'.
     '_vectors' -> #(0 0.8 -0.2)} asDictionary.
@@ -192,10 +200,14 @@ docs := {
     {'id' -> 3. 'title' -> 'Meilisearch.st'. 'contents' -> 'I tried Meilisearch.st'.
     '_vectors' -> #(1 2 3) } asDictionary.
 }.
+(vectorBlogIndex putDocuments: docs) waitEndedForAWhile.
 
-resp := index vectorSearch: #(1 2 3).
-resp := index vectorSearch: #(0 0.8 0.2).
+resp := vectorBlogIndex vectorSearch: #(1 2 3).
+resp hits first. "print it => a Dictionary('_semanticScore'->14.0 '_vectors'->#(1 2 3) 'contents'->'I tried Meilisearch.st' 'id'->3 'title'->'Meilisearch.st' )
+"
 
+resp := vectorBlogIndex vectorSearch: #(0 0.8 0.2).
+resp hits first. "a Dictionary('_semanticScore'->0.6 '_vectors'->#(0 0.8 -0.2) 'contents'->'I finally woke up' 'id'->1 'title'->'Woke up' )"
 ```
 
 ### Deleting an index
