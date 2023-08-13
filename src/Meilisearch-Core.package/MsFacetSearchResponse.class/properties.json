@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "MsResponse",
+	"category" : "Meilisearch-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"facetHits",
+		"facetQuery",
+		"processingTimeMs"
+	],
+	"name" : "MsFacetSearchResponse",
+	"type" : "normal"
+}

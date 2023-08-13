@@ -136,6 +136,81 @@ resp collect: [ :each | each hits ]. "print it => an Array(an Array(a Dictionary
 in Tokyo' 'id'->1 'title'->'Smalltalk meetup' )) an Array(a Dictionary('id'->2)))"
 ```
 
+### Search with facets
+
+By setting #filterableAttributes: on an index, you can enable [faceted search](https://www.meilisearch.com/docs/learn/fine_tuning_results/faceted_search) feature. The search response includes facets statistics, which can be used to further refine search results.
+
+```Smalltalk
+(meili createIndex: 'facet-books') waitEndedForAWhile.
+booksIndex := meili index: 'facet-books'.
+settingsTask := booksIndex applySettingsUsing: [ :opts | 
+	opts filterableAttributes: #('title' 'rating' 'genres').
+].
+settingsTask waitEndedForAWhile.
+docs := {    
+    {'id' -> 1. 'title' -> 'Hard Times'. 'rating' -> 4.5.
+    'genres' -> #('Classics' 'Victorian' 'English Literature')} asDictionary.
+    {'id' -> 2. 'title' -> 'The Great Gatsby'. 'rating' -> 4.8.
+    'genres' -> #('Classics' 'American Literature' 'Romance') } asDictionary.
+    {'id' -> 3. 'title' -> 'Moby Dick'. 'rating' -> 4.7.
+    'genres' -> #('Classics' 'American Literature' 'Adventure') } asDictionary.
+}.
+(booksIndex putDocuments: docs) waitEndedForAWhile.
+resp := booksIndex search: 'classic' optionsUsing: [:opts | opts facets: #('genres' 'rating')].
+
+resp facetStats at: 'rating'. "print it => a Dictionary('max'->4.8 'min'->4.5 )"
+resp facetDistribution at: 'genres'. "print it => a Dictionary('Adventure'->1 'American Literature'->2 'Classics'->3 'English
+Literature'->1 'Romance'->1 'Victorian'->1 )"
+
+resp := booksIndex search: 'America' optionsUsing: [:opts | opts facets: #('genres' 'rating')].
+resp facetStats at: 'rating'. "print it => a Dictionary('max'->4.8 'min'->4.7 )"
+resp facetDistribution at: 'genres'. "print it => a Dictionary('Adventure'->1 'American Literature'->2 'Classics'->2 'Romance'->1
+)"
+```
+
+You can also use #facetSearchUsing: to search for facet values in the index. The #facetQuery: search word is a prefix match and allows typos.
+
+```Smalltalk
+resp := booksIndex facetSearchUsing: [:opts | opts facetQuery: 'clasic'; facetName: 'genres'; filter: 'rating > 4.5'].
+facetHits := resp facetHits. "print it => an Array(a Dictionary('count'->2 'value'->'Classics' ))"
+
+```
+
+### Vector search
+
+Starting with Meilisearch 1.3 you can [search documents by vectors](https://www.meilisearch.com/docs/learn/experimental/vector_search). This feature is still experimental, so you should explicitly enable it using the experimental features API.
+
+```Smalltalk
+"Enable vector search feature"
+meili vectorStore: true.
+```
+
+Now you can perform vector search.
+
+```Smalltalk
+(meili createIndex: 'vector-blog') waitEndedForAWhile.
+vectorBlogIndex := meili index: 'vector-blog'.
+
+"Each document should have '_vectors' field to store vectors"
+"These values are dummy. In reality, the values should be calculated by some Word2Vec programs"
+docs := {    
+    {'id' -> 1. 'title' -> 'Woke up'. 'contents' -> 'I finally woke up'.
+    '_vectors' -> #(0 0.8 -0.2)} asDictionary.
+    {'id' -> 2. 'title' -> 'Smalltalk'. 'contents' -> 'I did Smalltalk'.
+    '_vectors' -> #(1 -0.2 0) } asDictionary.
+    {'id' -> 3. 'title' -> 'Meilisearch.st'. 'contents' -> 'I tried Meilisearch.st'.
+    '_vectors' -> #(1 2 3) } asDictionary.
+}.
+(vectorBlogIndex putDocuments: docs) waitEndedForAWhile.
+
+resp := vectorBlogIndex vectorSearch: #(1 2 3).
+resp hits first. "print it => a Dictionary('_semanticScore'->14.0 '_vectors'->#(1 2 3) 'contents'->'I tried Meilisearch.st' 'id'->3 'title'->'Meilisearch.st' )
+"
+
+resp := vectorBlogIndex vectorSearch: #(0 0.8 0.2).
+resp hits first. "a Dictionary('_semanticScore'->0.6 '_vectors'->#(0 0.8 -0.2) 'contents'->'I finally woke up' 'id'->1 'title'->'Woke up' )"
+```
+
 ### Deleting an index
 
 ```Smalltalk
