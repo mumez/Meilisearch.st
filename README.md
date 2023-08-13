@@ -151,20 +151,21 @@ docs := {
     {'id' -> 1. 'title' -> 'Hard Times'. 'rating' -> 4.5.
     'genres' -> #('Classics' 'Victorian' 'English Literature')} asDictionary.
     {'id' -> 2. 'title' -> 'The Great Gatsby'. 'rating' -> 4.8.
-    'genres' -> #('Classics' 'American Literature') } asDictionary.
+    'genres' -> #('Classics' 'American Literature' 'Romance') } asDictionary.
     {'id' -> 3. 'title' -> 'Moby Dick'. 'rating' -> 4.7.
-    'genres' -> #('Classics' 'American Literature') } asDictionary.
+    'genres' -> #('Classics' 'American Literature' 'Adventure') } asDictionary.
 }.
 (booksIndex putDocuments: docs) waitEndedForAWhile.
 resp := booksIndex search: 'classic' optionsUsing: [:opts | opts facets: #('genres' 'rating')].
 
 resp facetStats at: 'rating'. "print it => a Dictionary('max'->4.8 'min'->4.5 )"
-resp facetDistribution at: 'genres'. "print it => a Dictionary('American Literature'->2 'Classics'->3 'English Literature'->1
-'Victorian'->1 )"
+resp facetDistribution at: 'genres'. "print it => a Dictionary('Adventure'->1 'American Literature'->2 'Classics'->3 'English
+Literature'->1 'Romance'->1 'Victorian'->1 )"
 
 resp := booksIndex search: 'America' optionsUsing: [:opts | opts facets: #('genres' 'rating')].
 resp facetStats at: 'rating'. "print it => a Dictionary('max'->4.8 'min'->4.7 )"
-resp facetDistribution at: 'genres'. "print it => a Dictionary('American Literature'->2 'Classics'->2 )"
+resp facetDistribution at: 'genres'. "print it => a Dictionary('Adventure'->1 'American Literature'->2 'Classics'->2 'Romance'->1
+)"
 ```
 
 You can also use #facetSearchUsing: to search for facet values in the index. The #facetQuery: search word is a prefix match and allows typos.
@@ -191,7 +192,7 @@ Now you can perform vector search.
 vectorBlogIndex := meili index: 'vector-blog'.
 
 "Each document should have '_vectors' field to store vectors"
-"These values are dummy. In reality, the values should be calculated by some word2vec programs"
+"These values are dummy. In reality, the values should be calculated by some Word2Vec programs"
 docs := {    
     {'id' -> 1. 'title' -> 'Woke up'. 'contents' -> 'I finally woke up'.
     '_vectors' -> #(0 0.8 -0.2)} asDictionary.
