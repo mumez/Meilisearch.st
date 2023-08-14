@@ -11,4 +11,4 @@ testSetGetExperimentalFeatures
 	self assert: updatedExperimeltalFeatures vectorStore equals: false.
 	self assert: updatedExperimeltalFeatures scoreDetails equals: true.
 	] ensure: [  
-	meilisearch experimentalFeaturesWithOptions: originalExperimeltalFeatures].
+	meilisearch experimentalFeaturesWithOptions: originalExperimeltalFeatures asDictionary].
