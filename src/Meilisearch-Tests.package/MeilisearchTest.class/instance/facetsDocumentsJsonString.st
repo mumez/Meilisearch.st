@@ -80,9 +80,9 @@ facetsDocumentsJsonString
   },
   {
     "id": 11,
-    "title": "Alice''s Adventures in Wonderland",
+    "title": "Alices Adventures in Wonderland",
     "genres": [
-      "Children''s Literature",
+      "Childrens Literature",
       "Classics",
       "Fantasy"
     ],
@@ -92,9 +92,9 @@ facetsDocumentsJsonString
   },
   {
     "id": 12,
-    "title": "Charlotte''s Web",
+    "title": "Charlottes Web",
     "genres": [
-      "Children''s Literature",
+      "Childrens Literature",
       "Classics"
     ],
     "language": "English",
@@ -103,7 +103,7 @@ facetsDocumentsJsonString
   },
   {
     "id": 13,
-    "title": "The Hitchhiker''s Guide to the Galaxy",
+    "title": "The Hitchhikers Guide to the Galaxy",
     "genres": [
       "Comedy",
       "Science Fiction",
@@ -129,7 +129,7 @@ facetsDocumentsJsonString
     "id": 15,
     "title": "Matilda",
     "genres": [
-      "Children''s Literature",
+      "Childrens Literature",
       "Comedy",
       "Classics"
     ],
@@ -137,9 +137,9 @@ facetsDocumentsJsonString
     "author": "Roald Dahl",
     "rating": 4.4
   }
-]''s Adventures in Wonderland",
+]s Adventures in Wonderland",
     "genres": [
-      "Children''s Literature",
+      "Childrens Literature",
       "Classics",
       "Fantasy"
     ],
@@ -148,9 +148,9 @@ facetsDocumentsJsonString
   },
   {
     "id": 12,
-    "title": "Charlotte''s Web",
+    "title": "Charlottes Web",
     "genres": [
-      "Children''s Literature",
+      "Childrens Literature",
       "Classics"
     ],
     "language": "English",
@@ -158,7 +158,7 @@ facetsDocumentsJsonString
   },
   {
     "id": 13,
-    "title": "The Hitchhiker''s Guide to the Galaxy",
+    "title": "The Hitchhikers Guide to the Galaxy",
     "genres": [
       "Comedy",
       "Science Fiction",
@@ -182,7 +182,7 @@ facetsDocumentsJsonString
     "id": 15,
     "title": "Matilda",
     "genres": [
-      "Children''s Literature",
+      "Childrens Literature",
       "Comedy",
       "Classics"
     ],

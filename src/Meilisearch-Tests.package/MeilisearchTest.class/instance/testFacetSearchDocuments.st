@@ -24,7 +24,7 @@ testFacetSearchDocuments
 	self assert: (classics at: 'count') equals: 7.
 	comedy := facetHits detect: [ :each | (each at: 'value') = 'Comedy'].
 	self assert: (comedy at: 'count') equals: 1.
-	childrensLiterature := facetHits detect: [ :each | (each at: 'value') = 'Children''s Literature'].
+	childrensLiterature := facetHits detect: [ :each | (each at: 'value') = 'Childrens Literature'].
 	self assert: (childrensLiterature at: 'count') equals: 2.
 	
 	deleteDocumentsTask := index deleteAllDocuments.

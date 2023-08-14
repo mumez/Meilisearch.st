@@ -1,3 +1,3 @@
 actions
 experimentalFeaturesWithOptions: options
-	^ self httpJsonPatch: 'experimental-features' contents: options asDictionary
+	^ self httpJsonPatch: 'experimental-features' contents: options
