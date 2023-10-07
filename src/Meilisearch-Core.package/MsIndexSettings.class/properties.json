@@ -6,6 +6,7 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
+		"dictionary",
 		"displayedAttributes",
 		"distinctAttribute",
 		"faceting",
@@ -13,6 +14,8 @@
 		"pagination",
 		"rankingRules",
 		"searchableAttributes",
+		"separatorTokens",
+		"nonSeparatorTokens",
 		"sortableAttributes",
 		"stopWords",
 		"synonyms",
