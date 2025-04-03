@@ -1,3 +1,7 @@
 instance creation
 default
-	^default ifNil: [ default := self new ]
+
+	default ifNil: [ 
+		default := self new.
+		self setKey ].
+	^ default
