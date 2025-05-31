@@ -1,9 +1,7 @@
 tests
 testSearchVectorizedDocuments
-	| originalIndexes originalVectorStore newIndexId index createIndexTask documents putDocumentsTask resp deleteDocumentsTask deleteIndexTask |
+	| originalIndexes newIndexId index createIndexTask documents putDocumentsTask resp deleteDocumentsTask deleteIndexTask |
 	originalIndexes := meilisearch indexes.
-	originalVectorStore := meilisearch vectorStore.
-	meilisearch vectorStore: true.
 	newIndexId := 'mailisearch-st-test-vector-search-1'.
 	createIndexTask := meilisearch createIndex: newIndexId.
 	createIndexTask waitEndedForAWhile.
@@ -38,4 +36,3 @@ testSearchVectorizedDocuments
 	deleteIndexTask waitEndedForAWhile.
 	self assert: deleteIndexTask isSucceeded.
 	
-	meilisearch vectorStore: originalVectorStore
