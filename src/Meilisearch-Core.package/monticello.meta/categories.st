@@ -1,1 +1,1 @@
-self packageOrganizer ensurePackage: #'Meilisearch-Core' withTags: #()!
+SystemOrganization addCategory: #'Meilisearch-Core'!
