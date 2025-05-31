@@ -5,9 +5,7 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"index"
-	],
+	"instvars" : [ ],
 	"name" : "MsResponse",
 	"type" : "normal"
 }
