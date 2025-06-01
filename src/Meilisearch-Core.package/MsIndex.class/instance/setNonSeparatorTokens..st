@@ -1,4 +1,4 @@
-actions-index-settings
+index-settings
 setNonSeparatorTokens: nonSeparatorTokens
 	^ self applySettingsUsing: [ :opts |
 		  opts nonSeparatorTokens: nonSeparatorTokens ]

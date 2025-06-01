@@ -1,4 +1,4 @@
-actions-index-settings
+index-settings
 getAllSettings
 	| resp |
 	resp := self httpJsonGet: 'settings'.

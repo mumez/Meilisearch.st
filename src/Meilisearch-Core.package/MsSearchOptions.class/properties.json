@@ -27,7 +27,8 @@
 		"showRankingScore",
 		"attributesToSearchOn",
 		"showRankingScoreDetails",
-		"vector"
+		"vector",
+		"hybrid"
 	],
 	"name" : "MsSearchOptions",
 	"type" : "normal"
