@@ -1,4 +1,4 @@
-actions-index-settings
+index-settings
 setDisplayedAttributes: attributeNames
 	^ self applySettingsUsing: [ :opts |
 		  opts displayedAttributes: attributeNames ]

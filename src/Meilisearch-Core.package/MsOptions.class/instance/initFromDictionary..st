@@ -1,3 +1,3 @@
 initialization
 initFromDictionary: aDictionary
-	self subclassResponsibility 
+	"override if you wish"

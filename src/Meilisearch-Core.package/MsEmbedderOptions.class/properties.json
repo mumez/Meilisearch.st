@@ -1,0 +1,27 @@
+{
+	"commentStamp" : "",
+	"super" : "MsOptions",
+	"category" : "Meilisearch-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"source",
+		"url",
+		"apiKey",
+		"model",
+		"documentTemplate",
+		"documentTemplateMaxBytes",
+		"dimensions",
+		"revision",
+		"distribution",
+		"request",
+		"response",
+		"binaryQuantized",
+		"indexingEmbedder",
+		"searchEmbedder",
+		"pooling"
+	],
+	"name" : "MsEmbedderOptions",
+	"type" : "normal"
+}

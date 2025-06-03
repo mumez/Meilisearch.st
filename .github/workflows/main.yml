@@ -9,14 +9,14 @@ jobs:
       meilisearch:
         image: getmeili/meilisearch:latest
         env:
-          MEILI_MASTER_KEY: 'meili-master-key-for-test'
-          MEILI_NO_ANALYTICS: 'true'
+          MEILI_MASTER_KEY: "meili-master-key-for-test"
+          MEILI_NO_ANALYTICS: "true"
         ports:
-          - '7700:7700'
+          - "7700:7700"
     strategy:
       fail-fast: false
       matrix:
-        smalltalk: [Pharo64-11]
+        smalltalk: [Pharo64-11, Pharo64-12, Pharo64-13]
         experimental: [false]
     continue-on-error: ${{ matrix.experimental }}
     name: ${{ matrix.smalltalk }}

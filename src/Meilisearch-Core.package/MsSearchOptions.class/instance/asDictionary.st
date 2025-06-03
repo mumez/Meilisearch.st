@@ -7,6 +7,7 @@ asDictionary
     self offset ifNotNil: [:v | dict at: 'offset' put: v].
     self limit ifNotNil: [:v | dict at: 'limit' put: v].
     self hitsPerPage ifNotNil: [:v | dict at: 'hitsPerPage' put: v].
+    self hybrid ifNotNil: [:v | dict at: 'hybrid' put: v].
     self page ifNotNil: [:v | dict at: 'page' put: v].
     self filter ifNotNil: [:v | dict at: 'filter' put: v].
     self facets ifNotNil: [:v | dict at: 'facets' put: v].

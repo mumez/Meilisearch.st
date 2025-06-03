@@ -1,4 +1,4 @@
-actions-index-settings
+index-settings
 setRankingRules: rankingRules
 	^ self applySettingsUsing: [ :opts |
 		  opts rankingRules: rankingRules ]

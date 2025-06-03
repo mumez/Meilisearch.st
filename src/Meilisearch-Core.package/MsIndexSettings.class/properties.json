@@ -19,7 +19,9 @@
 		"sortableAttributes",
 		"stopWords",
 		"synonyms",
-		"typoTolerance"
+		"typoTolerance",
+		"facetSearch",
+		"embedders"
 	],
 	"name" : "MsIndexSettings",
 	"type" : "normal"
