@@ -1,30 +1,27 @@
 tests
 testSearchVectorizedDocuments
-	| originalIndexes originalVectorStore newIndexId index createIndexTask documents putDocumentsTask resp deleteDocumentsTask deleteIndexTask |
+	| originalIndexes newIndexId index createIndexTask documents putDocumentsTask resp deleteDocumentsTask deleteIndexTask |
 	originalIndexes := meilisearch indexes.
-	originalVectorStore := meilisearch vectorStore.
-	meilisearch vectorStore: true.
 	newIndexId := 'mailisearch-st-test-vector-search-1'.
 	createIndexTask := meilisearch createIndex: newIndexId.
 	createIndexTask waitEndedForAWhile.
 	self assert: createIndexTask isSucceeded.
-	
 	index := (meilisearch index: newIndexId).
+	index setEmbedder: 'mock' using: [:ops | ops userProvided dimensions: 3].
 	documents := self vectorDocumentsJson.
 		
 	putDocumentsTask := index putDocuments: documents.
 	putDocumentsTask waitEndedForAWhile.
 	self assert: putDocumentsTask isSucceeded.
 	
-	resp := index vectorSearch: #(1 2 3).
+	resp := index vectorSearch: #(1 2 3) embedder: 'mock'.
 	self assert: resp estimatedTotalHits equals: 3.
 	self assert: (resp hits first at: 'id') equals: 3.
 	
-	resp := index vectorSearch: #(0 0 0).
+	resp := index vectorSearch: #(0 0 0) embedder: 'mock'.
 	self assert: resp estimatedTotalHits equals: 3.
-	self assert: (resp hits first at: '_semanticScore') equals: 0.
 	
-	resp := index vectorSearch: #(0 0.8 0.2).
+	resp := index vectorSearch: #(0 0.8 0.2)  embedder: 'mock'.
 	self assert: resp estimatedTotalHits equals: 3.
 	self assert: (resp hits first at: 'id') equals: 1.
 	
@@ -38,4 +35,3 @@ testSearchVectorizedDocuments
 	deleteIndexTask waitEndedForAWhile.
 	self assert: deleteIndexTask isSucceeded.
 	
-	meilisearch vectorStore: originalVectorStore

@@ -44,7 +44,7 @@ meili settings apiKey. "print it => 'meili-api-key-B'"
 
 ```Smalltalk
 meili := MeiliSearch new.
-task := meili createIndex: 'my-blog' primaryKey: 'id'. 
+task := meili createIndex: 'my-blog' primaryKey: 'id'.
 "or just `meili createIndex: 'my-blog'.`"
 task inspect. "You can see the task is enqueued"
 ```
@@ -55,7 +55,7 @@ task inspect. "You can see the task is enqueued"
 
 ```Smalltalk
 resp := MeiliSearch new indexes.
-resp results detect: [ :each | each uid = 'my-blog' ]. "print it => 
+resp results detect: [ :each | each uid = 'my-blog' ]. "print it =>
 a MsIndex uid: 'my-blog' primaryKey: 'id' createdAt:
 2023-06-26T07:10:18.44037373+00:00 updatedAt:
 2023-06-26T07:10:18.458306996+00:00"
@@ -71,7 +71,7 @@ index := (MeiliSearch new index: 'my-blog') loaded.
 
 ```Smalltalk
 index := MeiliSearch new index: 'my-blog'.
-docs := {    
+docs := {
     {'id' -> 1. 'title' -> 'Woke up'. 'contents'->'I finally woke up. Started researching Meilisearch.' } asDictionary.
     {'id' -> 2. 'title' -> 'Smalltalk'. 'contents'->'I did Smalltalk programming' } asDictionary.
     {'id' -> 3. 'title' -> 'Meilisearch.st'. 'contents'->'I tried Meilisearch.st. Works good. I can add full-text search to my blog program in a few minutes.' } asDictionary.
@@ -109,11 +109,11 @@ resp hits. "print it => an Array(a Dictionary('id'->1 ))"
 
 "You can apply index-specific settings for advanced searching"
 attributes := #('id' 'title').
-settingsTask := index applySettingsUsing: [ :opts | 
+settingsTask := index applySettingsUsing: [ :opts |
   opts sortableAttributes: attributes copy; filterableAttributes: attributes copy; displayedAttributes: attributes copy.
 ].
 settingsTask waitEndedForAWhile.
-resp := index search: 'Meilisearch' optionsUsing:[:opts | opts filter: 'title = "Woke up"']. 
+resp := index search: 'Meilisearch' optionsUsing:[:opts | opts filter: 'title = "Woke up"'].
 resp hits. "print it => an Array(a Dictionary('id'->1 'title'->'Woke up' ))"
 
 ```
@@ -143,11 +143,11 @@ By setting #filterableAttributes: on an index, you can enable [faceted search](h
 ```Smalltalk
 (meili createIndex: 'facet-books') waitEndedForAWhile.
 booksIndex := meili index: 'facet-books'.
-settingsTask := booksIndex applySettingsUsing: [ :opts | 
+settingsTask := booksIndex applySettingsUsing: [ :opts |
 	opts filterableAttributes: #('title' 'rating' 'genres').
 ].
 settingsTask waitEndedForAWhile.
-docs := {    
+docs := {
     {'id' -> 1. 'title' -> 'Hard Times'. 'rating' -> 4.5.
     'genres' -> #('Classics' 'Victorian' 'English Literature')} asDictionary.
     {'id' -> 2. 'title' -> 'The Great Gatsby'. 'rating' -> 4.8.
@@ -176,39 +176,18 @@ facetHits := resp facetHits. "print it => an Array(a Dictionary('count'->2 'valu
 
 ```
 
-### Vector search
+### AI-powered hybrid search
 
-Starting with Meilisearch 1.3 you can [search documents by vectors](https://www.meilisearch.com/docs/learn/experimental/vector_search). This feature is still experimental, so you should explicitly enable it using the experimental features API.
+Meilisearch supports [hybrid search](https://www.meilisearch.com/blog/hybrid-search), which combines keyword (lexical) and semantic (vector-based) search for more powerful and flexible results.
 
-```Smalltalk
-"Enable vector search feature"
-meili vectorStore: true.
-```
-
-Now you can perform vector search.
+See `MsIndex>>hybridSearch:query vector:vector embedder:embedderName semanticRatio:semanticRatio` and related methods for more details.
 
 ```Smalltalk
-(meili createIndex: 'vector-blog') waitEndedForAWhile.
-vectorBlogIndex := meili index: 'vector-blog'.
-
-"Each document should have '_vectors' field to store vectors"
-"These values are dummy. In reality, the values should be calculated by some Word2Vec programs"
-docs := {    
-    {'id' -> 1. 'title' -> 'Woke up'. 'contents' -> 'I finally woke up'.
-    '_vectors' -> #(0 0.8 -0.2)} asDictionary.
-    {'id' -> 2. 'title' -> 'Smalltalk'. 'contents' -> 'I did Smalltalk'.
-    '_vectors' -> #(1 -0.2 0) } asDictionary.
-    {'id' -> 3. 'title' -> 'Meilisearch.st'. 'contents' -> 'I tried Meilisearch.st'.
-    '_vectors' -> #(1 2 3) } asDictionary.
-}.
-(vectorBlogIndex putDocuments: docs) waitEndedForAWhile.
-
-resp := vectorBlogIndex vectorSearch: #(1 2 3).
-resp hits first. "print it => a Dictionary('_semanticScore'->14.0 '_vectors'->#(1 2 3) 'contents'->'I tried Meilisearch.st' 'id'->3 'title'->'Meilisearch.st' )
-"
-
-resp := vectorBlogIndex vectorSearch: #(0 0.8 0.2).
-resp hits first. "a Dictionary('_semanticScore'->0.6 '_vectors'->#(0 0.8 -0.2) 'contents'->'I finally woke up' 'id'->1 'title'->'Woke up' )"
+"Example of AI-powered hybrid search: combine text and vector queries"
+resp := index hybridSearch: 'some words'
+    vector: #(1 2 3)
+    embedder: 'openAi-embedder'
+    semanticRatio: 0.5.
 ```
 
 ### Deleting an index

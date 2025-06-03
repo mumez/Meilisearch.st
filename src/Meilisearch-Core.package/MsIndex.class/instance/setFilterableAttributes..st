@@ -1,4 +1,4 @@
-actions-index-settings
+index-settings
 setFilterableAttributes: attributeNames
 	^ self applySettingsUsing: [ :opts |
 		  opts filterableAttributes: attributeNames ]

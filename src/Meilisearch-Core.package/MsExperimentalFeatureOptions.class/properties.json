@@ -6,8 +6,7 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"vectorStore",
-		"scoreDetails"
+		"optionsDict"
 	],
 	"name" : "MsExperimentalFeatureOptions",
 	"type" : "normal"

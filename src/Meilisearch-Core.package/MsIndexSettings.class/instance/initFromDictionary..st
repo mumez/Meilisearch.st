@@ -3,7 +3,9 @@ initFromDictionary: aDictionary
     aDictionary at: 'dictionary' ifPresent: [ :v | self dictionary: v ].
     aDictionary at: 'displayedAttributes' ifPresent: [ :v | self displayedAttributes: v ].
     aDictionary at: 'distinctAttribute' ifPresent: [ :v | self distinctAttribute: v ].
+    aDictionary at: 'embedders' ifPresent: [ :v | self embedders: v ].
     aDictionary at: 'faceting' ifPresent: [ :v | self faceting: v ].
+    aDictionary at: 'facetSearch' ifPresent: [ :v | self facetSearch: v ].
     aDictionary at: 'filterableAttributes' ifPresent: [ :v | self filterableAttributes: v ].
     aDictionary at: 'pagination' ifPresent: [ :v | self pagination: v ].
     aDictionary at: 'rankingRules' ifPresent: [ :v | self rankingRules: v ].

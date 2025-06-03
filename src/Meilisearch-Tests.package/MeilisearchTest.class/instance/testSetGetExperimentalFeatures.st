@@ -1,14 +1,12 @@
 tests
 testSetGetExperimentalFeatures
-	| originalExperimeltalFeatures updatedExperimeltalFeatures |
+	| originalExperimeltalFeatures firstOptionKey isEnabled isEnabledUpdated updatedExperimeltalFeatures |
 	[originalExperimeltalFeatures := meilisearch experimentalFeatures.
-	meilisearch experimentalFeaturesUsing: [:opts | opts vectorStore: true; scoreDetails: false].
+	firstOptionKey := originalExperimeltalFeatures optionKeys first.
+	isEnabled := originalExperimeltalFeatures isEnabled: firstOptionKey.
+	meilisearch experimentalFeaturesUsing: [:opts | opts at: firstOptionKey enabled: isEnabled not].
 	updatedExperimeltalFeatures := meilisearch experimentalFeatures.
-	self assert: updatedExperimeltalFeatures vectorStore equals: true.
-	self assert: updatedExperimeltalFeatures scoreDetails equals: false.
-	meilisearch experimentalFeaturesUsing: [:opts | opts vectorStore: false; scoreDetails: true].
-	updatedExperimeltalFeatures := meilisearch experimentalFeatures.
-	self assert: updatedExperimeltalFeatures vectorStore equals: false.
-	self assert: updatedExperimeltalFeatures scoreDetails equals: true.
+	isEnabledUpdated := updatedExperimeltalFeatures isEnabled: firstOptionKey.
+	self assert: isEnabled equals: isEnabledUpdated not.
 	] ensure: [  
 	meilisearch experimentalFeaturesWithOptions: originalExperimeltalFeatures asDictionary].

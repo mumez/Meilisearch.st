@@ -5,7 +5,9 @@ asDictionary
     self dictionary ifNotNil: [:v | dict at: 'dictionary' put: v].
     self displayedAttributes ifNotNil: [:v | dict at: 'displayedAttributes' put: v].
     self distinctAttribute ifNotNil: [:v | dict at: 'distinctAttribute' put: v].
+    self embedders ifNotNil: [:v | dict at: 'embedders' put: v].
     self faceting ifNotNil: [:v | dict at: 'faceting' put: v].
+    self facetSearch ifNotNil: [:v | dict at: 'facetSearch' put: v].
     self filterableAttributes ifNotNil: [:v | dict at: 'filterableAttributes' put: v].
     self pagination ifNotNil: [:v | dict at: 'pagination' put: v].
     self rankingRules ifNotNil: [:v | dict at: 'rankingRules' put: v].
