@@ -3,6 +3,6 @@ hybridSearch: query vector: vector embedder: embedderName semanticRatio: semanti
 	^ self searchUsing: [ :opts |
 		  opts
 			  q: query;
-			  vector: vector;
 			  embedder: embedderName semanticRatio: semanticRatio.
+		  vector ifNotNil: [ opts vector: vector ].
 		  optionsBuilder ifNotNil: [ optionsBuilder value: opts ] ]
