@@ -1,13 +1,14 @@
 {
 	"commentStamp" : "",
-	"super" : "MsObject",
-	"category" : "Meilisearch-Core",
+	"super" : "MsPaginator",
+	"category" : "Meilisearch-Paginator",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"defaultSearchOptionsBuilder"
+		"offset",
+		"limit"
 	],
-	"name" : "MeiliSearch",
+	"name" : "MsOffsetPaginator",
 	"type" : "normal"
 }

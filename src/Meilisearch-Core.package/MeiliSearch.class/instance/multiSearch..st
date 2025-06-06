@@ -1,4 +1,4 @@
-actions
+searching
 multiSearch: queries
 	| conts resp |
 	conts := Dictionary new.
