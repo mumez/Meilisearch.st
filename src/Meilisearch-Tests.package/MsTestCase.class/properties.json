@@ -1,11 +1,15 @@
 {
 	"commentStamp" : "",
-	"super" : "MsTestCase",
+	"super" : "TestCase",
 	"category" : "Meilisearch-Tests",
 	"classinstvars" : [ ],
 	"pools" : [ ],
-	"classvars" : [ ],
-	"instvars" : [ ],
-	"name" : "MeiliSearchTest",
+	"classvars" : [
+		"Settings"
+	],
+	"instvars" : [
+		"meilisearch"
+	],
+	"name" : "MsTestCase",
 	"type" : "normal"
 }

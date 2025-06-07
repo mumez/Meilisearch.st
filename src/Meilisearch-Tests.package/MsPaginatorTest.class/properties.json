@@ -6,6 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "MeiliSearchTest",
+	"name" : "MsPaginatorTest",
 	"type" : "normal"
 }

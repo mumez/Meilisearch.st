@@ -1,0 +1,2 @@
+private
+setOptionsFromResponse: aResponse
