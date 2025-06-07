@@ -1,3 +1,4 @@
 testing
 atEnd
-	^ self page >= self totalPages
+	self response ifNil: [ ^ false ].
+	^ self page > self totalPages
