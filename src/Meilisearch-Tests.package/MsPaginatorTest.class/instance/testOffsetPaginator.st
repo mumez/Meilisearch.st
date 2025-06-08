@@ -1,18 +1,9 @@
 tests
 testOffsetPaginator
-	| originalIndexes newIndexId index createIndexTask documents putDocumentsTask paginator responses paginator2 responses2 resp deleteDocumentsTask deleteIndexTask |
-	originalIndexes := meilisearch indexes.
+	| newIndexId index documents paginator responses paginator2 responses2 |
 	newIndexId := 'mailisearch-st-test-offset-paginator-1'.
-	createIndexTask := meilisearch createIndex: newIndexId.
-	createIndexTask waitEndedForAWhile.
-	self assert: createIndexTask isSucceeded.
-	
-	index := (meilisearch index: newIndexId).
 	documents := self documentsJson.
-		
-	putDocumentsTask := index putDocuments: documents.
-	putDocumentsTask waitEndedForAWhile.
-	self assert: putDocumentsTask isSucceeded.
+	index := self createIndexNamed: newIndexId documents: documents.
 	
 	paginator := index offsetPaginator.
 	paginator search: 'English'; limit: 5.
@@ -41,12 +32,4 @@ testOffsetPaginator
 	self assert: (responses2 at: 2) hits size equals: 6.
 	self assert: (responses2 at: 3) hits size equals: 0.
 	
-	deleteDocumentsTask := index deleteAllDocuments.
-	deleteDocumentsTask waitEndedForAWhile.
-	
-	resp := index getAllDocuments.
-	self assert: resp total equals: 0.
-	
-	deleteIndexTask := index delete.
-	deleteIndexTask waitEndedForAWhile.
-	self assert: deleteIndexTask isSucceeded.
+	self deleteAllDocumentsIn: index

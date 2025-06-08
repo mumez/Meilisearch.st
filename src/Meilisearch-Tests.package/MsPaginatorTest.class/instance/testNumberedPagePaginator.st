@@ -1,18 +1,10 @@
 tests
 testNumberedPagePaginator
-	| originalIndexes newIndexId index createIndexTask documents putDocumentsTask paginator responses paginator2 responses2 pagedResp resp deleteDocumentsTask deleteIndexTask |
+	| originalIndexes newIndexId index documents paginator responses paginator2 responses2 pagedResp |
 	originalIndexes := meilisearch indexes.
 	newIndexId := 'mailisearch-st-test-numbered-page-paginator-1'.
-	createIndexTask := meilisearch createIndex: newIndexId.
-	createIndexTask waitEndedForAWhile.
-	self assert: createIndexTask isSucceeded.
-	
-	index := (meilisearch index: newIndexId).
 	documents := self documentsJson.
-		
-	putDocumentsTask := index putDocuments: documents.
-	putDocumentsTask waitEndedForAWhile.
-	self assert: putDocumentsTask isSucceeded.
+	index := self createIndexNamed: newIndexId documents: documents.
 	
 	paginator := index numberedPagePaginator.
 	paginator search: 'English'; hitsPerPage: 5.
@@ -49,12 +41,4 @@ testNumberedPagePaginator
 	pagedResp := (paginator2 page: 3) next.
 	self assertCollection: pagedResp hits equals: (responses2 at: 1) hits.
 	
-	deleteDocumentsTask := index deleteAllDocuments.
-	deleteDocumentsTask waitEndedForAWhile.
-	
-	resp := index getAllDocuments.
-	self assert: resp total equals: 0.
-	
-	deleteIndexTask := index delete.
-	deleteIndexTask waitEndedForAWhile.
-	self assert: deleteIndexTask isSucceeded.
+	self deleteAllDocumentsIn: index
