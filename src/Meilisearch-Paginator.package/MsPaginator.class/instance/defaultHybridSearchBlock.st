@@ -4,6 +4,6 @@ defaultHybridSearchBlock
 	  self searcher
 		  hybridSearch: self query
 		  vector: self vector
-		  embedder: self embedderName
+		  embedder: self embedder
 		  semanticRatio: self semanticRatio
 		  optionsUsing: self paginationOptionsBuilder ]

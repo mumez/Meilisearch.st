@@ -1,7 +1,6 @@
 tests
 testNumberedPagePaginatorPrevious
-	| originalIndexes newIndexId index documents paginator responses ids |
-	originalIndexes := meilisearch indexes.
+	| newIndexId index documents paginator responses ids |
 	newIndexId := 'mailisearch-st-test-numbered-page-paginator-2'.
 	documents := self documentsJson.
 	index := self createIndexNamed: newIndexId documents: documents.

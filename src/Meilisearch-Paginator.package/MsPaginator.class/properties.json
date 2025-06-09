@@ -9,11 +9,11 @@
 		"searcher",
 		"query",
 		"vector",
-		"embedderName",
 		"semanticRatio",
 		"response",
 		"searchBlock",
-		"paginationOptionsBuilder"
+		"paginationOptionsBuilder",
+		"embedder"
 	],
 	"name" : "MsPaginator",
 	"type" : "normal"
