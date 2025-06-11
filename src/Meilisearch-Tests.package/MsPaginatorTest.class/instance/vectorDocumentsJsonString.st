@@ -3,7 +3,7 @@ vectorDocumentsJsonString
 
 	^ '[
     {
-        "title": "AAA",
+        "title": "First Item",
         "id": 1,
         "_vectors": {
             "mock": [
@@ -25,7 +25,7 @@ vectorDocumentsJsonString
         }
     },
     {
-        "title": "BBB",
+        "title": "Item Item",
         "id": 3,
         "_vectors": {
             "mock": [
@@ -36,7 +36,7 @@ vectorDocumentsJsonString
         }
     },
     {
-        "title": "CCC",
+        "title": "Item Item Item",
         "id": 4,
         "_vectors": {
             "mock": [
@@ -47,7 +47,7 @@ vectorDocumentsJsonString
         }
     },
     {
-        "title": "DDD",
+        "title": "Item Item Item Item",
         "id": 5,
         "_vectors": {
             "mock": [
@@ -190,7 +190,7 @@ vectorDocumentsJsonString
         }
     },
     {
-        "title": "QQQ",
+        "title": "Inverse Item",
         "id": 18,
         "_vectors": {
             "mock": [
@@ -212,7 +212,7 @@ vectorDocumentsJsonString
         }
     },
     {
-        "title": "SSS",
+        "title": "Last Item",
         "id": 20,
         "_vectors": {
             "mock": [
