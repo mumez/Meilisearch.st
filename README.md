@@ -176,6 +176,36 @@ facetHits := resp facetHits. "print it => an Array(a Dictionary('count'->2 'valu
 
 ```
 
+### Paginator
+
+Meilisearch.st provides two types of pagination to handle large result sets efficiently:
+
+1. **Offset Pagination** - Uses `offset` and `limit` parameters
+2. **Numbered Page Pagination** - Uses `page` and `hitsPerPage` parameters
+
+```Smalltalk
+"Offset Pagination"
+paginator1 := index offsetPaginator.
+paginator1
+    search: 'English';
+    offset: 3;     "Skip first 3 results"
+    limit: 5.      "Return max 5 results"
+
+"Numbered Page Pagination"
+paginator2 := index numberedPagePaginator.
+paginator2
+    search: 'English';
+    page: 1;        "First page (1-based)"
+    hitsPerPage: 5. "5 results per page"
+
+"Iterate through all results"
+responses := OrderedCollection new.
+[ paginator2 atEnd ] whileFalse: [ 
+    response := paginator2 next. "Get the search result"
+    responses add: response.
+].
+```
+
 ### AI-powered hybrid search
 
 Meilisearch supports [hybrid search](https://www.meilisearch.com/blog/hybrid-search), which combines keyword (lexical) and semantic (vector-based) search for more powerful and flexible results.

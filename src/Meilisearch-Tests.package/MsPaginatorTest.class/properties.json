@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "MsTestCase",
+	"category" : "Meilisearch-Tests",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "MsPaginatorTest",
+	"type" : "normal"
+}

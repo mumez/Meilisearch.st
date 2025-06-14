@@ -1,0 +1,20 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "Meilisearch-Paginator",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"searcher",
+		"query",
+		"vector",
+		"semanticRatio",
+		"response",
+		"searchBlock",
+		"paginationOptionsBuilder",
+		"embedder"
+	],
+	"name" : "MsPaginator",
+	"type" : "normal"
+}
