@@ -3,7 +3,7 @@
 [![CI](https://github.com/mumez/Meilisearch.st/actions/workflows/main.yml/badge.svg)](https://github.com/mumez/Meilisearch.st/actions/workflows/main.yml)
 
 Meilisearch client for Smalltalk.
-Currently, Pharo 11 and GemStone/S 3.6.x are supported.
+Currently, Pharo 11-13 and GemStone/S 3.6.x are supported.
 
 ## Installation
 
@@ -174,6 +174,36 @@ You can also use #facetSearchUsing: to search for facet values in the index. The
 resp := booksIndex facetSearchUsing: [:opts | opts facetQuery: 'clasic'; facetName: 'genres'; filter: 'rating > 4.5'].
 facetHits := resp facetHits. "print it => an Array(a Dictionary('count'->2 'value'->'Classics' ))"
 
+```
+
+### Paginator
+
+Meilisearch.st provides two types of pagination to handle large result sets efficiently:
+
+1. **Offset Pagination** - Uses `offset` and `limit` parameters
+2. **Numbered Page Pagination** - Uses `page` and `hitsPerPage` parameters
+
+```Smalltalk
+"Offset Pagination"
+paginator1 := index offsetPaginator.
+paginator1
+    search: 'English';
+    offset: 3;     "Skip first 3 results"
+    limit: 5.      "Return max 5 results"
+
+"Numbered Page Pagination"
+paginator2 := index numberedPagePaginator.
+paginator2
+    search: 'English';
+    page: 1;        "First page (1-based)"
+    hitsPerPage: 5. "5 results per page"
+
+"Iterate through all results"
+responses := OrderedCollection new.
+[ paginator2 atEnd ] whileFalse: [ 
+    response := paginator2 next. "Get the search result"
+    responses add: response.
+].
 ```
 
 ### AI-powered hybrid search

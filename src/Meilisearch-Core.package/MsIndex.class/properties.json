@@ -9,7 +9,8 @@
 		"uid",
 		"createdAt",
 		"updatedAt",
-		"primaryKey"
+		"primaryKey",
+		"defaultSearchOptionsBuilder"
 	],
 	"name" : "MsIndex",
 	"type" : "normal"

@@ -1,4 +1,4 @@
-searching
+searching-basic
 searchWithOptions: options
 	| resp |
 	resp := self httpJsonPost: 'search' contents: options.

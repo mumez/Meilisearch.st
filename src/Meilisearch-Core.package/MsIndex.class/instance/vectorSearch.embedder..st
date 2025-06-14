@@ -1,3 +1,3 @@
 searching-hybrid
 vectorSearch: vector embedder: embedderName
-	^ self hybridSearch: nil vector: vector embedder: embedderName semanticRatio: 1
+	^ self vectorSearch: vector embedder: embedderName  optionsUsing: nil

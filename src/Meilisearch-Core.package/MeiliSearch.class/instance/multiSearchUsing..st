@@ -1,4 +1,4 @@
-actions
+searching
 multiSearchUsing: queriesBuilder
 	| queries |
 	queries := queriesBuilder value: MsSearchOptions.
