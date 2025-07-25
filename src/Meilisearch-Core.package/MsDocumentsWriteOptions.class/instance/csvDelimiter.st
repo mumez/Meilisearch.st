@@ -1,4 +1,0 @@
-accessing
-csvDelimiter
-
-	^ csvDelimiter

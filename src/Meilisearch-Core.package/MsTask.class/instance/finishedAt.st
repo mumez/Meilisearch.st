@@ -1,4 +1,0 @@
-accessing
-finishedAt
-
-	^ finishedAt

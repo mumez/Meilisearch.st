@@ -1,4 +1,0 @@
-accessing
-facetHits
-
-	^ facetHits
