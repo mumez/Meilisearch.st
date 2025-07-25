@@ -1,4 +1,0 @@
-accessing
-synonyms
-
-	^ synonyms

@@ -1,4 +1,0 @@
-accessing
-documentTemplate
-
-	^ documentTemplate

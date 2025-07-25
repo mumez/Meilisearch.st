@@ -1,3 +1,0 @@
-converting
-asDictionary
-	^ self optionsDict

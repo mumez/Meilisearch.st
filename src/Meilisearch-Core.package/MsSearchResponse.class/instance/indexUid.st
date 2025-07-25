@@ -1,4 +1,0 @@
-accessing
-indexUid
-
-	^ indexUid

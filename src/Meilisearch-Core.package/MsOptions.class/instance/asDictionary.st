@@ -1,3 +1,0 @@
-converting
-asDictionary
-	^ Dictionary new
