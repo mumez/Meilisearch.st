@@ -1,3 +1,0 @@
-private
-createHttpJsonClient
-	self subclassResponsibility

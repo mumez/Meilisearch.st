@@ -1,4 +1,0 @@
-accessing
-startedAt
-
-	^ startedAt
